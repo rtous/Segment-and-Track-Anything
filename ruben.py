@@ -31,8 +31,8 @@ def main():
 	output_path = "data/scenes/tiktok2/samtrack"
 	imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
 	
-	if not os.path.exists(outputpath):
-		os.makedirs(outputpath)
+	if not os.path.exists(output_path):
+		os.makedirs(output_path)
 
 
 	print("opening ", imgs_path[0])
