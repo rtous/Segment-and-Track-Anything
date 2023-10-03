@@ -26,8 +26,10 @@ from tool.transfer_tools import mask2bbox
 
 def main():
 
+	print("Ruben's version of SAM-Track") 
 	file_path = "data/scenes/tiktok2/imagesFull"
 	imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
+	print("opening ", imgs_path[0])
 	first_frame = imgs_path[0]
 	first_frame = cv2.imread(first_frame)
 	first_frame = cv2.cvtColor(first_frame, cv2.COLOR_BGR2RGB)
@@ -41,6 +43,20 @@ def main():
 	points_per_side = 16 #1-100 (default 16)
 
 	Seg_Tracker, _, _, _ = init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame)
+
+	print("Everything")
+
+    frame_idx = 0
+
+    with torch.cuda.amp.autocast():
+        pred_mask = Seg_Tracker.seg(origin_frame)
+        torch.cuda.empty_cache()
+        gc.collect()
+        Seg_Tracker.add_reference(origin_frame, pred_mask, frame_idx)
+        Seg_Tracker.first_frame_mask = pred_mask
+
+    masked_frame = draw_mask(origin_frame.copy(), pred_mask)
+
 
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
     
