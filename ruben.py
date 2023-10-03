@@ -28,9 +28,9 @@ def main():
 
 	file_path = "data/scenes/tiktok2/imagesFull"
 	imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
-    first_frame = imgs_path[0]
-    first_frame = cv2.imread(first_frame)
-    first_frame = cv2.cvtColor(first_frame, cv2.COLOR_BGR2RGB)
+	first_frame = imgs_path[0]
+	first_frame = cv2.imread(first_frame)
+	first_frame = cv2.cvtColor(first_frame, cv2.COLOR_BGR2RGB)
 
 	origin_frame = first_frame
 	aot_model = "r50_deaotl"# "deaotb", "deaotl", "r50_deaotl" (default "r50_deaotl")                                 
