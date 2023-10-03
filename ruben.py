@@ -29,21 +29,21 @@ def main():
 	print("Ruben's version of SAM-Track") 
 	file_path = "data/scenes/tiktok2/imagesFull"
 	output_path = "data/scenes/tiktok2/samtrack"
-	imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
+	imgs_paths, imgs_names = sorted([os.path.join(file_path, img_name), img_name for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
 	
 	if not os.path.exists(output_path):
 		os.makedirs(output_path)
 
-	blank_image = np.zeros((256,256,3), np.uint8)
-	cv2.imwrite(os.path.join(output_path, "test.png"), blank_image)
+	#blank_image = np.zeros((256,256,3), np.uint8)
+	#cv2.imwrite(os.path.join(output_path, "test.png"), blank_image)
 
 
-	print("opening ", imgs_path[0])
-	first_frame_file_name = imgs_path[0]
-	first_frame = cv2.imread(first_frame_file_name)
+	print("Reading first frame from ", imgs_paths[0])
+	first_frame_file_path = imgs_paths[0]
+	first_frame = cv2.imread(first_frame_file_path)
 	first_frame = cv2.cvtColor(first_frame, cv2.COLOR_BGR2RGB)
 
-	cv2.imwrite(os.path.join(output_path, first_frame_file_name), blank_image)
+	#cv2.imwrite(os.path.join(output_path, first_frame_file_name), blank_image)
 
 
 	origin_frame = first_frame
@@ -73,7 +73,7 @@ def main():
 	print("Done, writing")
 
 
-	cv2.imwrite(os.path.join(output_path, first_frame_file_name), masked_frame)
+	cv2.imwrite(os.path.join(output_path, imgs_names[0]), masked_frame)
 
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
     
