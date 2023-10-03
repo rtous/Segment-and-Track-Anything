@@ -49,11 +49,11 @@ def main():
 	frame_idx = 0
 
 	with torch.cuda.amp.autocast():
-        pred_mask = Seg_Tracker.seg(origin_frame)
-        torch.cuda.empty_cache()
-        gc.collect()
-        Seg_Tracker.add_reference(origin_frame, pred_mask, frame_idx)
-        Seg_Tracker.first_frame_mask = pred_mask
+		pred_mask = Seg_Tracker.seg(origin_frame)
+		torch.cuda.empty_cache()
+		gc.collect()
+		Seg_Tracker.add_reference(origin_frame, pred_mask, frame_idx)
+		Seg_Tracker.first_frame_mask = pred_mask
 
 	masked_frame = draw_mask(origin_frame.copy(), pred_mask)
 
