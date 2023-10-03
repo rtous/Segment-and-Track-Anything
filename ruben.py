@@ -46,17 +46,18 @@ def main():
 
 	print("Everything")
 
-    frame_idx = 0
+	frame_idx = 0
 
-    with torch.cuda.amp.autocast():
+	with torch.cuda.amp.autocast():
         pred_mask = Seg_Tracker.seg(origin_frame)
         torch.cuda.empty_cache()
         gc.collect()
         Seg_Tracker.add_reference(origin_frame, pred_mask, frame_idx)
         Seg_Tracker.first_frame_mask = pred_mask
 
-    masked_frame = draw_mask(origin_frame.copy(), pred_mask)
+	masked_frame = draw_mask(origin_frame.copy(), pred_mask)
 
+	print("Done")
 
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
     
