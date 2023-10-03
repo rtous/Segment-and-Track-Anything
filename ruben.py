@@ -34,11 +34,17 @@ def main():
 	if not os.path.exists(output_path):
 		os.makedirs(output_path)
 
+	blank_image = np.zeros((height,width,3), np.uint8)
+	cv2.imwrite(os.path.join(output_path, "test.jpg"), blank_image)
+
 
 	print("opening ", imgs_path[0])
 	first_frame_file_name = imgs_path[0]
 	first_frame = cv2.imread(first_frame_file_name)
 	first_frame = cv2.cvtColor(first_frame, cv2.COLOR_BGR2RGB)
+
+	cv2.imwrite(os.path.join(output_path, first_frame_file_name), blank_image)
+
 
 	origin_frame = first_frame
 	aot_model = "r50_deaotl"# "deaotb", "deaotl", "r50_deaotl" (default "r50_deaotl")                                 
