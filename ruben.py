@@ -35,7 +35,7 @@ def main():
 		os.makedirs(output_path)
 
 	blank_image = np.zeros((256,256,3), np.uint8)
-	cv2.imwrite(os.path.join(output_path, "test.jpg"), blank_image)
+	cv2.imwrite(os.path.join(output_path, "test.png"), blank_image)
 
 
 	print("opening ", imgs_path[0])
