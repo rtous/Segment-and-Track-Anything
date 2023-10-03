@@ -28,7 +28,7 @@ def main():
 
 	print("Ruben's version of SAM-Track") 
 	file_path = "data/scenes/tiktok2/imagesFull"
-	imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
+	imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
 	print("opening ", imgs_path[0])
 	first_frame = imgs_path[0]
 	first_frame = cv2.imread(first_frame)
