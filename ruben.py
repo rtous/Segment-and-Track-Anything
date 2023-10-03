@@ -67,7 +67,9 @@ def main():
 		Seg_Tracker.add_reference(origin_frame, pred_mask, frame_idx)
 		Seg_Tracker.first_frame_mask = pred_mask
 
-	masked_frame = draw_mask(origin_frame.copy(), pred_mask)
+	just_mask = np.zeros_like(origin_frame)
+	#masked_frame = draw_mask(origin_frame.copy(), pred_mask)
+	masked_frame = draw_mask(just_mask, pred_mask)
 
 
 	print("Done, writing to file...")
