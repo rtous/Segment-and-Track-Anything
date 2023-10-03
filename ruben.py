@@ -34,7 +34,7 @@ def main():
 	if not os.path.exists(output_path):
 		os.makedirs(output_path)
 
-	blank_image = np.zeros((height,width,3), np.uint8)
+	blank_image = np.zeros((256,256,3), np.uint8)
 	cv2.imwrite(os.path.join(output_path, "test.jpg"), blank_image)
 
 
