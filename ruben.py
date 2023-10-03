@@ -28,10 +28,16 @@ def main():
 
 	print("Ruben's version of SAM-Track") 
 	file_path = "data/scenes/tiktok2/imagesFull"
+	output_path = "data/scenes/tiktok2/samtrack"
 	imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
+	
+	if not os.path.exists(outputpath):
+		os.makedirs(outputpath)
+
+
 	print("opening ", imgs_path[0])
-	first_frame = imgs_path[0]
-	first_frame = cv2.imread(first_frame)
+	first_frame_file_name = imgs_path[0]
+	first_frame = cv2.imread(first_frame_file_name)
 	first_frame = cv2.cvtColor(first_frame, cv2.COLOR_BGR2RGB)
 
 	origin_frame = first_frame
@@ -57,7 +63,11 @@ def main():
 
 	masked_frame = draw_mask(origin_frame.copy(), pred_mask)
 
-	print("Done")
+
+	print("Done, writing")
+
+
+	cv2.imwrite(os.path.join(output_path, first_frame_file_name), masked_frame)
 
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
     
