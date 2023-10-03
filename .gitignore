@@ -1,5 +1,5 @@
 .vscode
-ckpt/*
+# ckpt/*
 assets/*masks
 assets/*mp4
 # assets/*zip
@@ -12,3 +12,4 @@ cym_utils
 /aot/results
 /aot/pretrain_models
 /aot/datasets
+/myVenv
