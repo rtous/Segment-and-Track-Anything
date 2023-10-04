@@ -106,5 +106,29 @@ def SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask):
 
     return Seg_Tracker
 
+#A a UI primer es crida a Detect
+
+
+#Despres es crida a tracking_objects_in_video del fitxer seg_track_anything
+#tracking_objects_in_video(Seg_Tracker, input_video, input_img_seq, fps, frame_num)
+
+#o millor directament a img_seq_type_input_tracking
+fps = 8 #Web UI
+frame_num=0
+
+file_name = input_img_seq.name.split('/')[-1].split('.')[0]
+file_path = f'data/scenes/tiktok2/imagesFull'
+imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
+video_name = "example"
+io_args = {
+        'tracking_result_dir': output_path,
+        'output_mask_dir': f'{output_path}/{video_name}_masks',
+        'output_masked_frame_dir': f'{output_path}/{video_name}_masked_frames',
+        'output_video': f'{output_path}/{video_name}_seg.mp4', # keep same format as input video
+        'output_gif': f'{output_path}/{video_name}_seg.gif',
+    }
+img_seq_type_input_tracking(SegTracker, io_args, video_name, imgs_path, fps, frame_num)
+
+
 if __name__ == "__main__":
     main()
