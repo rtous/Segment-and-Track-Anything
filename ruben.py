@@ -18,7 +18,7 @@ from skimage.morphology.binary import binary_dilation
 import argparse
 import torch
 import time, math
-from seg_track_anything import aot_model2ckpt, tracking_objects_in_video, draw_mask
+from seg_track_anything import aot_model2ckpt, tracking_objects_in_video, draw_mask, img_seq_type_input_tracking
 import gc
 import numpy as np
 import json
