@@ -116,7 +116,7 @@ def SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask):
 fps = 8 #Web UI
 frame_num=0
 
-file_name = input_img_seq.name.split('/')[-1].split('.')[0]
+#file_name = input_img_seq.name.split('/')[-1].split('.')[0]
 file_path = f'data/scenes/tiktok2/imagesFull'
 imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
 video_name = "example"
