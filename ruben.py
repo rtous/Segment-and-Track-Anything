@@ -78,7 +78,7 @@ def main():
 
 	#A a UI primer es crida a Detect
 	print("Detecting objects by text...")
-	text_threshold = 0.5
+	text_threshold = 1.0
 	box_threshold = 0.25
 	grounding_caption = "skin, hair, bra, shoes, leggins"
 	predicted_mask, annotated_frame= Seg_Tracker.detect_and_seg(origin_frame, grounding_caption, box_threshold, text_threshold)
