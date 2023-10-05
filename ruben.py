@@ -106,9 +106,7 @@ def main():
 	        'output_gif': f'{output_path}/{video_name}_seg.gif',
 	    }
 	print("Segmenting...")
-	#Seg_Tracker.sam_gap = sam_gap
-	print("SegTracker.sam_gap = ", SegTracker.sam_gap)
-	img_seq_type_input_tracking(SegTracker, io_args, video_name, imgs_path, fps, frame_num)
+	img_seq_type_input_tracking(Seg_Tracker, io_args, video_name, imgs_path, fps, frame_num)
 	print("Done.")
 
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
