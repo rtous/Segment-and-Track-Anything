@@ -56,7 +56,7 @@ def main():
 
 	Seg_Tracker, _, _, _ = init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame)
 
-	print("Everything")
+	print("Segmenting first frame...")
 
 	frame_idx = 0
 
@@ -72,18 +72,17 @@ def main():
 	masked_frame = draw_mask(just_mask, pred_mask)
 
 
-	print("Done, writing to file...")
+	print("Done segmenting first frame, result written to file")
 
 	cv2.imwrite(os.path.join(output_path, os.path.basename(imgs_paths[0])), masked_frame)
 
 
 	#A a UI primer es crida a Detect
-
+	print("Detecting objects by text...")
 	text_threshold = 0.25
 	box_threshold = 0.25
 	grounding_caption = "skin"
 	predicted_mask, annotated_frame= Seg_Tracker.detect_and_seg(origin_frame, grounding_caption, box_threshold, text_threshold)
-
 	Seg_Tracker = SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask)
 
 
@@ -106,8 +105,9 @@ def main():
 	        'output_video': f'{output_path}/{video_name}_seg.mp4', # keep same format as input video
 	        'output_gif': f'{output_path}/{video_name}_seg.gif',
 	    }
+	print("Segmenting...")
 	img_seq_type_input_tracking(SegTracker, io_args, video_name, imgs_path, fps, frame_num)
-
+	print("Done.")
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
     
     if origin_frame is None:
