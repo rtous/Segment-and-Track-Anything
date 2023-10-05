@@ -267,6 +267,7 @@ def img_seq_type_input_tracking(SegTracker, io_args, video_name, imgs_path, fps,
                 continue
 
             frame_name = os.path.basename(img_path).split('.')[0]
+            print("Reading image from ", img_path)
             frame = cv2.imread(img_path)
             frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
             
