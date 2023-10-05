@@ -76,7 +76,18 @@ def main():
 
 	cv2.imwrite(os.path.join(output_path, os.path.basename(imgs_paths[0])), masked_frame)
 
+
 	#A a UI primer es crida a Detect
+
+	text_threshold = 0.25
+	box_threshold = 0.25
+	grounding_caption = "skin"
+	predicted_mask, annotated_frame= Seg_Tracker.detect_and_seg(origin_frame, grounding_caption, box_threshold, text_threshold)
+
+    Seg_Tracker = SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask)
+
+
+
 	#Despres es crida a tracking_objects_in_video del fitxer seg_track_anything
 	#tracking_objects_in_video(Seg_Tracker, input_video, input_img_seq, fps, frame_num)
 
