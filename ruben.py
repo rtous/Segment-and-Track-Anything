@@ -106,7 +106,8 @@ def main():
 	        'output_gif': f'{output_path}/{video_name}_seg.gif',
 	    }
 	print("Segmenting...")
-	Seg_Tracker.sam_gap = sam_gap
+	#Seg_Tracker.sam_gap = sam_gap
+	print("SegTracker.sam_gap = ", SegTracker.sam_gap)
 	img_seq_type_input_tracking(SegTracker, io_args, video_name, imgs_path, fps, frame_num)
 	print("Done.")
 
