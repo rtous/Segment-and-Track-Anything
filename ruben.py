@@ -80,7 +80,7 @@ def main():
 	print("Detecting objects by text...")
 	text_threshold = 0.25
 	box_threshold = 0.25
-	grounding_caption = "bra, hair, shoes, leggins, skin, eyes, mouth"
+	grounding_caption = "bra, hair, shoes, leggins, skin"
 	predicted_mask, annotated_frame= Seg_Tracker.detect_and_seg(origin_frame, grounding_caption, box_threshold, text_threshold)
 	Seg_Tracker = SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask)
 
