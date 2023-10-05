@@ -55,9 +55,8 @@ def main():
 	points_per_side = 16 #1-100 (default 16)
 
 	Seg_Tracker, _, _, _ = init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame)
-
+	'''
 	print("Segmenting first frame...")
-
 	frame_idx = 0
 
 	with torch.cuda.amp.autocast():
@@ -75,7 +74,7 @@ def main():
 	print("Done segmenting first frame, result written to file")
 
 	cv2.imwrite(os.path.join(output_path, os.path.basename(imgs_paths[0])), masked_frame)
-
+	'''
 
 	#A a UI primer es crida a Detect
 	print("Detecting objects by text...")
