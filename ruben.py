@@ -27,8 +27,10 @@ from tool.transfer_tools import mask2bbox
 def main():
 
 	print("Ruben's version of SAM-Track") 
-	file_path = "data/scenes/tiktok2/imagesFull"
-	output_path = "data/scenes/tiktok2/samtrack"
+	#file_path = "data/scenes/tiktok2/imagesFull"
+	#output_path = "data/scenes/tiktok2/samtrack"
+	file_path = "data/scenes/assault1_1/imagesFull"
+	output_path = "data/scenes/assault1_1/samtrack"
 	imgs_paths = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
 	
 	if not os.path.exists(output_path):
@@ -81,7 +83,7 @@ def main():
 	text_threshold = 0.25
 	box_threshold = 0.25
 	########################
-	grounding_caption = "leggins, bra, hair, shoes, skin"
+	grounding_caption = "hat, vest, hair, trousers, skin, t-shirt"
 	#########################
 	predicted_mask, annotated_frame= Seg_Tracker.detect_and_seg(origin_frame, grounding_caption, box_threshold, text_threshold)
 	Seg_Tracker = SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask)
