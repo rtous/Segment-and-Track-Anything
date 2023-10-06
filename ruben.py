@@ -29,8 +29,8 @@ def main():
 	print("Ruben's version of SAM-Track") 
 	#file_path = "data/scenes/tiktok2/imagesFull"
 	#output_path = "data/scenes/tiktok2/samtrack"
-	file_path = "data/scenes/assault1_1/imagesFull"
-	output_path = "data/scenes/assault1_1/samtrack"
+	file_path = "data/scenes/assault2_1/imagesFull"
+	output_path = "data/scenes/assault2_1/samtrack"
 	imgs_paths = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
 	
 	if not os.path.exists(output_path):
