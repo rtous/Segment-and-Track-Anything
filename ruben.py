@@ -159,7 +159,7 @@ def main():
 			else:
 				all_masks = cv2.imread(path_all)
 				mask = cv2.imread(path_mask)
-				all_masks = cv2.addWeighted(all_masks,0.4,mask,0.1,0)
+				all_masks = cv2.addWeighted(all_masks,1.0,mask,1.0,0)
 			cv2.imwrite(path_all, all_masks)
 
 
