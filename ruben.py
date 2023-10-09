@@ -36,7 +36,7 @@ def main():
 	file_path = "data/scenes/ruben2/imagesFull"
 	output_path = "data/scenes/ruben2/samtrack"
 	########################
-	grounding_caption = "skin, tshirt, hair, ball, pants"
+	grounding_caption = "skin, tshirt, hair, ball, legs"
 	#########################
 	
 
