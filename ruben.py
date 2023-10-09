@@ -36,7 +36,8 @@ def main():
 	file_path = "data/scenes/ruben2/imagesFull"
 	output_path = "data/scenes/ruben2/samtrack"
 	########################
-	grounding_caption = "skin, tshirt, hair, ball, legs"
+	#grounding_caption = "skin, tshirt, hair, ball, legs"
+	grounding_caption = "trousers, skin, tshirt, hair, ball"
 	#########################
 	
 
@@ -56,6 +57,8 @@ def main():
 
 	#cv2.imwrite(os.path.join(output_path, first_frame_file_name), blank_image)
 
+
+	#1) Initialize a SegTracker with the first frame
 
 	origin_frame = first_frame
 	aot_model = "r50_deaotl"# "deaotb", "deaotl", "r50_deaotl" (default "r50_deaotl")                                 
@@ -87,7 +90,7 @@ def main():
 	cv2.imwrite(os.path.join(output_path, os.path.basename(imgs_paths[0])), masked_frame)
 	'''
 
-	#A a UI primer es crida a Detect
+	#2) Detect objects by text (grounding_caption) over the first frame")
 	print("Detecting objects by text...")
 	text_threshold = 0.25
 	box_threshold = 0.25
