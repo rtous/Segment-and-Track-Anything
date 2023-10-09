@@ -50,7 +50,7 @@ def main():
 	#grounding_caption = "legs, skin, tshirt, ball, hair" FAIL
 	#grounding_caption = "skin, legs, arms, tshirt, ball, hair" #OK NO HAIR
 	#grounding_caption = "face, hair, arms, legs, tshirt, ball"
-	grounding_caption = "body, arms, hair" 
+	grounding_caption = "ball, body, arms, hair" 
 	#########################
 	
 
