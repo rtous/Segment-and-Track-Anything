@@ -38,7 +38,8 @@ def main():
 	########################
 	#grounding_caption = "skin, tshirt, hair, ball, legs"
 	#grounding_caption = "trousers, skin, tshirt, hair, ball" FATAL
-	grounding_caption = "arms, face, tshirt, trousers, hair, ball"
+	#grounding_caption = "arms, face, tshirt, trousers, hair, ball"
+	grounding_caption = "hair, arms, legs, tshirt, ball"
 	#########################
 	
 
