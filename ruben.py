@@ -103,36 +103,42 @@ def main():
 	cv2.imwrite(os.path.join(output_path, os.path.basename(imgs_paths[0])), masked_frame)
 	'''
 
-	#2) Detect objects by text (grounding_caption) over the first frame")
-	print("Detecting objects by text...")
-	text_threshold = 0.5#0.25
-	box_threshold = 0.2#0.25
-	
-	predicted_mask, annotated_frame= Seg_Tracker.detect_and_seg(origin_frame, grounding_caption, box_threshold, text_threshold)
-	Seg_Tracker = SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask)
+	keyword_lists = ["hair", "skin, legs, arms, tshirt, ball"]
+
+	for i, keyword_list in enumerate(keyword_lists):
+
+		grounding_caption = keyword_list
+
+		#2) Detect objects by text (grounding_caption) over the first frame")
+		print("Detecting objects by text...")
+		text_threshold = 0.5#0.25
+		box_threshold = 0.2#0.25
+		
+		predicted_mask, annotated_frame= Seg_Tracker.detect_and_seg(origin_frame, grounding_caption, box_threshold, text_threshold)
+		Seg_Tracker = SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask)
 
 
 
-	#Despres es crida a tracking_objects_in_video del fitxer seg_track_anything
-	#tracking_objects_in_video(Seg_Tracker, input_video, input_img_seq, fps, frame_num)
+		#Despres es crida a tracking_objects_in_video del fitxer seg_track_anything
+		#tracking_objects_in_video(Seg_Tracker, input_video, input_img_seq, fps, frame_num)
 
-	#o millor directament a img_seq_type_input_tracking
-	fps = 8 #Web UI
-	frame_num=0
+		#o millor directament a img_seq_type_input_tracking
+		fps = 8 #Web UI
+		frame_num=0
 
-	#file_name = input_img_seq.name.split('/')[-1].split('.')[0]
-	imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
-	video_name = "example"
-	io_args = {
-	        'tracking_result_dir': output_path,
-	        'output_mask_dir': f'{output_path}/{video_name}_masks',
-	        'output_masked_frame_dir': f'{output_path}/{video_name}_masked_frames',
-	        'output_video': f'{output_path}/{video_name}_seg.mp4', # keep same format as input video
-	        'output_gif': f'{output_path}/{video_name}_seg.gif',
-	    }
-	print("Segmenting...")
-	img_seq_type_input_tracking(Seg_Tracker, io_args, video_name, imgs_path, fps, frame_num)
-	print("Done.")
+		#file_name = input_img_seq.name.split('/')[-1].split('.')[0]
+		imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
+		video_name = "example"
+		io_args = {
+		        'tracking_result_dir': output_path,
+		        'output_mask_dir': f'{output_path}/{video_name}_masks{i}',
+		        'output_masked_frame_dir': f'{output_path}/{video_name}_masked_frames{i}',
+		        'output_video': f'{output_path}/{video_name}_seg{i}.mp4', # keep same format as input video
+		        'output_gif': f'{output_path}/{video_name}_seg{i}.gif',
+		    }
+		print("Segmenting...")
+		img_seq_type_input_tracking(Seg_Tracker, io_args, video_name, imgs_path, fps, frame_num)
+		print("Done.")
 
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
     
