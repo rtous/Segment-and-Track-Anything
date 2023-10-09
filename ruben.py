@@ -35,6 +35,9 @@ def main():
 
 	file_path = "data/scenes/ruben2/imagesFull"
 	output_path = "data/scenes/ruben2/samtrack"
+	########################
+	grounding_caption = "skin, tshirt, trousers, hair, ball"
+	#########################
 	
 
 	imgs_paths = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
@@ -88,9 +91,7 @@ def main():
 	print("Detecting objects by text...")
 	text_threshold = 0.25
 	box_threshold = 0.25
-	########################
-	grounding_caption = "skin, clothes, hair, shoes"
-	#########################
+	
 	predicted_mask, annotated_frame= Seg_Tracker.detect_and_seg(origin_frame, grounding_caption, box_threshold, text_threshold)
 	Seg_Tracker = SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask)
 
