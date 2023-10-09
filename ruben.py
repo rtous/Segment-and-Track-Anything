@@ -104,7 +104,7 @@ def main():
 	'''
 
 	keyword_lists = ["hair", "skin, legs, arms, tshirt, ball"]
-
+	video_name = "example"
 	for i, keyword_list in enumerate(keyword_lists):
 
 		Seg_Tracker, _, _, _ = init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame)
@@ -131,7 +131,7 @@ def main():
 
 		#file_name = input_img_seq.name.split('/')[-1].split('.')[0]
 		imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
-		video_name = "example"
+		
 		io_args = {
 		        'tracking_result_dir': output_path,
 		        'output_mask_dir': f'{output_path}/{video_name}_masks{i}',
@@ -142,6 +142,23 @@ def main():
 		print("Segmenting...")
 		img_seq_type_input_tracking(Seg_Tracker, io_args, video_name, imgs_path, fps, frame_num)
 		print("Done.")
+
+	all_dir = f'{output_path}/{video_name}_all'
+	if not os.path.exists(all_dir):
+  		os.mkdir(all_dir)
+	for i, keyword_list in enumerate(keyword_lists):
+		masks_dir = f'{output_path}/{video_name}_masks{i}'
+		for filename in os.listdir(masks_dir):
+			path_mask = os.path.join(masks_dir, filename)
+			path_all = os.path.join(all_dir, filename)
+			if i == 0:
+				all_masks = cv2.imread(path_mask)
+			elif:
+				all_masks = cv2.imread(path_all)
+				mask = cv2.imread(path_mask)
+				all_masks = cv2.addWeighted(all_masks,0.4,mask,0.1,0)
+			cv2.imwrite(path_all, all_masks)
+
 
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
     
