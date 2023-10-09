@@ -50,7 +50,8 @@ def main():
 	#grounding_caption = "legs, skin, tshirt, ball, hair" FAIL
 	#grounding_caption = "skin, legs, arms, tshirt, ball, hair" #OK NO HAIR
 	#grounding_caption = "face, hair, arms, legs, tshirt, ball"
-	grounding_caption = "skin, hair" 
+	grounding_caption = "skin, hair"  
+	#NOT USED NOW
 	#########################
 	
 
@@ -103,6 +104,8 @@ def main():
 	cv2.imwrite(os.path.join(output_path, os.path.basename(imgs_paths[0])), masked_frame)
 	'''
 
+	#Lists of keywords
+	#First list will be added first, so put details the last
 	keyword_lists = ["hair", "skin, legs, arms, tshirt, ball"]
 	video_name = "example"
 	for i, keyword_list in enumerate(keyword_lists):
@@ -145,7 +148,7 @@ def main():
 
 	all_dir = f'{output_path}/{video_name}_all'
 	if not os.path.exists(all_dir):
-  		os.mkdir(all_dir)
+		os.mkdir(all_dir)
 	for i, keyword_list in enumerate(keyword_lists):
 		masks_dir = f'{output_path}/{video_name}_masks{i}'
 		for filename in os.listdir(masks_dir):
