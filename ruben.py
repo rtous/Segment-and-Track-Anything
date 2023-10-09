@@ -42,7 +42,8 @@ def main():
 	#grounding_caption = "hair, arms, legs, tshirt, ball" FATAL
 	#grounding_caption = "trousers, tshirt, ball, skin, hair" FATAL
 	#grounding_caption = "face, hair, arms, legs, tshirt, ball" BARBA!
-	grounding_caption = "skin, hair, legs, tshirt, ball"
+	#grounding_caption = "skin, hair, legs, tshirt, ball" #OK NO HAIR
+	grounding_caption = "skin, face, hair, legs, tshirt, ball"
 	#########################
 	
 
