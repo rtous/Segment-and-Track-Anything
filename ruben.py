@@ -156,7 +156,7 @@ def main():
 			path_all = os.path.join(all_dir, filename)
 			if i == 0:
 				all_masks = cv2.imread(path_mask)
-			elif:
+			else:
 				all_masks = cv2.imread(path_all)
 				mask = cv2.imread(path_mask)
 				all_masks = cv2.addWeighted(all_masks,0.4,mask,0.1,0)
