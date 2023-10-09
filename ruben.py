@@ -81,7 +81,7 @@ def main():
 	max_obj_num = 50 #50-300 (default 255)
 	points_per_side = 16 #1-100 (default 16)
 
-	Seg_Tracker, _, _, _ = init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame)
+	#Seg_Tracker, _, _, _ = init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame)
 	'''
 	print("Segmenting first frame...")
 	frame_idx = 0
@@ -106,6 +106,9 @@ def main():
 	keyword_lists = ["hair", "skin, legs, arms, tshirt, ball"]
 
 	for i, keyword_list in enumerate(keyword_lists):
+
+		Seg_Tracker, _, _, _ = init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame)
+
 
 		grounding_caption = keyword_list
 
