@@ -33,8 +33,8 @@ def main():
 	#file_path = "data/scenes/assault2_1/imagesFull"
 	#output_path = "data/scenes/assault2_1/samtrack"
 
-	file_path = "data/scenes/ucf101_taichi_g22_c03/imagesFull"
-	output_path = "data/scenes/ucf101_taichi_g22_c03/samtrack"
+	file_path = "data/scenes/ruben2/imagesFull"
+	output_path = "data/scenes/ruben2/samtrack"
 	
 
 	imgs_paths = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path) if img_name.endswith(".png") or img_name.endswith(".jpg")])
