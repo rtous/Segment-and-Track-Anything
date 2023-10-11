@@ -106,8 +106,8 @@ def main():
 
 	#Lists of keywords
 	#First list will be added first, so put details the last
-	#keyword_lists = ["hair", "skin, legs, arms, tshirt, ball"]
-	keyword_lists = ["hair", "skin, legs, arms, shirt, skirt"]
+	#keyword_lists = ["hair", "skin, legs, arms, tshirt, ball"] #ok ruben pilota
+	keyword_lists = ["hair, shoes", "skin, legs, arms, shirt, skirt"]
 	video_name = "example"
 	for i, keyword_list in enumerate(keyword_lists):
 
