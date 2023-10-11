@@ -33,8 +33,8 @@ def main():
 	#file_path = "data/scenes/assault2_1/imagesFull"
 	#output_path = "data/scenes/assault2_1/samtrack"
 
-	file_path = "data/scenes/green_woman1/imagesFull"
-	output_path = "data/scenes/green_woman1/samtrack"
+	file_path = "data/scenes/green_woman2/imagesFull"
+	output_path = "data/scenes/green_woman2/samtrack"
 	########################
 	#grounding_caption = "skin, tshirt, hair, ball, legs"
 	#grounding_caption = "trousers, skin, tshirt, hair, ball" FATAL
