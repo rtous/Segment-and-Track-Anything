@@ -110,7 +110,7 @@ def main():
 	#keyword_lists = ["hair, shoes", "skin, legs, arms, shirt, skirt"] #ok green woman 1
 	#keyword_lists = ["hair, shoes", "skin, legs, arms, clothes"] #ok green woman 2
 	#keyword_lists = ["hair", "skin, jacket, shirt"] #ok green woman 3
-	keyword_lists = ["car lights, car windows, tires", "car"] #ok car
+	keyword_lists = ["lights, windows, tires", "car"] #ok car
 
 	video_name = "example"
 	for i, keyword_list in enumerate(keyword_lists):
