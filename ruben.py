@@ -33,8 +33,8 @@ def main():
 	#file_path = "data/scenes/assault2_1/imagesFull"
 	#output_path = "data/scenes/assault2_1/samtrack"
 
-	file_path = "data/scenes/badcover1/imagesFull"
-	output_path = "data/scenes/badcover1/samtrack"
+	file_path = "data/scenes/green_woman1/imagesFull"
+	output_path = "data/scenes/green_woman1/samtrack"
 	########################
 	#grounding_caption = "skin, tshirt, hair, ball, legs"
 	#grounding_caption = "trousers, skin, tshirt, hair, ball" FATAL
@@ -107,7 +107,7 @@ def main():
 	#Lists of keywords
 	#First list will be added first, so put details the last
 	#keyword_lists = ["hair", "skin, legs, arms, tshirt, ball"]
-	keyword_lists = ["hair, guitar", "skin, legs, arms, tshirt"]
+	keyword_lists = ["hair", "skin, legs, arms, shirt, skirt"]
 	video_name = "example"
 	for i, keyword_list in enumerate(keyword_lists):
 
