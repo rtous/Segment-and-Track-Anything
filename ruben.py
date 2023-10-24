@@ -206,7 +206,7 @@ def SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask):
 
 
 if __name__ == "__main__":
-	print("Ruben's SAM-Track launcher")
-	print("scene:", sys.argv[1])
-	print("keyword lists:", sys.argv[2])
+    print("Ruben's SAM-Track launcher")
+    print("scene:", sys.argv[1])
+    print("keyword lists:", sys.argv[2])
     main(sys.argv[1], sys.argv[2])
