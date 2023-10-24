@@ -117,6 +117,7 @@ def main(scene, keyword_lists):
 	#keyword_lists = ["hair, feet", "skin, trousers, tshirt"] #testing arizona5
 	#keyword_lists = ["hair, shoes", "skin, trousers, tshirt"] #testing man_walk_1_part1
 
+	print("Working with keyword_lists:", keyword_lists)
 	video_name = "example"
 	for i, keyword_list in enumerate(keyword_lists):
 
