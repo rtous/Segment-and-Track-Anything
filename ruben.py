@@ -112,7 +112,7 @@ def main(scene, keyword_lists):
 	#keyword_lists = ["hair", "skin, jacket, shirt"] #ok green woman 3
 	#keyword_lists = ["lights, windows, tires", "car"] #ok car
 	#keyword_lists = ["hair, shoes", "skin, trousers, tshirt"] #ok arizona1
-	#keyword_lists = ["hair", "skin, tshirt"] #testing arizona3
+	keyword_lists = ["hair", "skin, tshirt"] #testing arizona3
 	#keyword_lists = ["hair, shoes", "skin, trousers, tshirt"] #testing arizona4_part1
 	#keyword_lists = ["hair, feet", "skin, trousers, tshirt"] #testing arizona5
 	#keyword_lists = ["hair, shoes", "skin, trousers, tshirt"] #testing man_walk_1_part1
