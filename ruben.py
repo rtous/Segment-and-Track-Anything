@@ -24,7 +24,7 @@ import numpy as np
 import json
 from tool.transfer_tools import mask2bbox
 
-def main():
+def main(scene, keywords_lists):
 
 	print("Ruben's version of SAM-Track") 
 	#file_path = "data/scenes/tiktok2/imagesFull"
@@ -33,8 +33,8 @@ def main():
 	#file_path = "data/scenes/assault2_1/imagesFull"
 	#output_path = "data/scenes/assault2_1/samtrack"
 
-	file_path = "data/scenes/arizona3/imagesFull"
-	output_path = "data/scenes/arizona3/samtrack"
+	file_path = "data/scenes/scene/imagesFull"
+	output_path = "data/scenes/scene/samtrack"
 	########################
 	#grounding_caption = "skin, tshirt, hair, ball, legs"
 	#grounding_caption = "trousers, skin, tshirt, hair, ball" FATAL
@@ -112,7 +112,10 @@ def main():
 	#keyword_lists = ["hair", "skin, jacket, shirt"] #ok green woman 3
 	#keyword_lists = ["lights, windows, tires", "car"] #ok car
 	#keyword_lists = ["hair, shoes", "skin, trousers, tshirt"] #ok arizona1
-	keyword_lists = ["hair", "skin, tshirt"] #ok arizona1
+	#keyword_lists = ["hair", "skin, tshirt"] #testing arizona3
+	#keyword_lists = ["hair, shoes", "skin, trousers, tshirt"] #testing arizona4_part1
+	#keyword_lists = ["hair, feet", "skin, trousers, tshirt"] #testing arizona5
+	#keyword_lists = ["hair, shoes", "skin, trousers, tshirt"] #testing man_walk_1_part1
 
 	video_name = "example"
 	for i, keyword_list in enumerate(keyword_lists):
@@ -203,4 +206,7 @@ def SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask):
 
 
 if __name__ == "__main__":
-    main()
+	print("Ruben's SAM-Track launcher")
+	print("scene:", sys.argv[1])
+	print("keyword lists:", sys.argv[2])
+    main(sys.argv[1], sys.argv[2])
