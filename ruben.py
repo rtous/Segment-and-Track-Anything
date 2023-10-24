@@ -33,8 +33,8 @@ def main(scene, keywords_lists):
 	#file_path = "data/scenes/assault2_1/imagesFull"
 	#output_path = "data/scenes/assault2_1/samtrack"
 
-	file_path = "data/scenes/scene/imagesFull"
-	output_path = "data/scenes/scene/samtrack"
+	file_path = "data/scenes/"+scene+"/imagesFull"
+	output_path = "data/scenes/"+scene+"/samtrack"
 	########################
 	#grounding_caption = "skin, tshirt, hair, ball, legs"
 	#grounding_caption = "trousers, skin, tshirt, hair, ball" FATAL
