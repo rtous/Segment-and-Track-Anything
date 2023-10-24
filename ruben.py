@@ -23,6 +23,7 @@ import gc
 import numpy as np
 import json
 from tool.transfer_tools import mask2bbox
+import pickle
 
 def main(scene, keyword_lists):
 
@@ -209,5 +210,5 @@ def SegTracker_add_first_frame(Seg_Tracker, origin_frame, predicted_mask):
 if __name__ == "__main__":
     print("Ruben's SAM-Track launcher")
     print("scene:", sys.argv[1])
-    print("keyword lists:", list(sys.argv[2]))
-    main(sys.argv[1], list(sys.argv[2]))
+    print("keyword lists:", pickle.loads(sys.argv[2]))
+    main(sys.argv[1], pickle.loads(sys.argv[2]))
