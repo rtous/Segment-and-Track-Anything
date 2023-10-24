@@ -24,7 +24,7 @@ import numpy as np
 import json
 from tool.transfer_tools import mask2bbox
 
-def main(scene, keywords_lists):
+def main(scene, keyword_lists):
 
 	print("Ruben's version of SAM-Track") 
 	#file_path = "data/scenes/tiktok2/imagesFull"
