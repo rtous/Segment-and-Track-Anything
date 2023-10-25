@@ -173,7 +173,6 @@ def main(scene, keyword_lists):
 				mask = cv2.imread(path_mask)
 				mask = replaceColors(mask, i)
 				mask = img2mask(mask)
-				print("mask shape = ", mask.shape)
 				#all_masks = cv2.addWeighted(all_masks,1.0,mask,1.0,0)
 				all_masks = overlay(bottomImage=all_masks, topImage=mask)
 			cv2.imwrite(path_all, all_masks)
@@ -184,10 +183,15 @@ def replaceColors(im, k):
     for i, color in enumerate(unique_colours):
         #mask = np.zeros_like(imgray)
         if color != 0:#do not change black
-        	im[imgray == color][0] = (50+(k*10+i)*10)%255
+        	im[imgray == color] = ((50+(k*10+i)*10)%255, 100, 100) 
+        	#im[imgray == color][0] = (50+(k*10+i)*10)%255
         #mask[imgray == color] = 255
         #cv2.threshold(source, thresholdValue, maxVal, thresholdingTechnique) 
         #ret, thresh = cv2.threshold(mask, 127, 255, 0)
+
+
+
+
     return im
 
 def img2mask(im):
