@@ -169,9 +169,8 @@ def main(scene, keyword_lists):
 			if i == 0:
 				all_masks = cv2.imread(path_mask)
 			else:
-				all_masks = cv2.imread(path_all)
-				mask = cv2.imread(path_mask)
-				mask = img2mask(mask)
+				all_masks = img2mask(cv2.imread(path_all))
+				mask = img2mask(cv2.imread(path_mask))
 				#all_masks = cv2.addWeighted(all_masks,1.0,mask,1.0,0)
 				all_masks = overlay(bottomImage=all_masks, topImage=mask)
 			cv2.imwrite(path_all, all_masks)
