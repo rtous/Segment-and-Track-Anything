@@ -171,10 +171,22 @@ def main(scene, keyword_lists):
 			else:
 				all_masks = cv2.imread(path_all)
 				mask = cv2.imread(path_mask)
-				all_masks = cv2.addWeighted(all_masks,1.0,mask,1.0,0)
+				#all_masks = cv2.addWeighted(all_masks,1.0,mask,1.0,0)
+				all_masks = overlay(bottomImage=all_masks, topImage=mask)
 			cv2.imwrite(path_all, all_masks)
 
-
+def overlay(bottomImage, topImage):
+	#Idea: add the topImage (complete) to a sliced bottomImage 
+    #Obtain an opencvmask from the alpha channel of the topImage
+    _, mask = cv2.threshold(topImage[:, :, 3], 0, 255, cv2.THRESH_BINARY)
+    #Invert the mask
+    mask = cv2.bitwise_not(mask) 
+    #Use the mask to cut the intersection from the bottomImage
+    bottomImageMinusTopImage = cv2.bitwise_and(bottomImage, bottomImage, mask=mask)
+    #Add the topImage (complete) and bottomImageMinusTopImage
+    result = bottomImageMinusTopImage + topImage
+    return result
+    
 def init_SegTracker(aot_model, long_term_mem, max_len_long_term, sam_gap, max_obj_num, points_per_side, origin_frame):
     
     if origin_frame is None:
