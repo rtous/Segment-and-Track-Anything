@@ -178,9 +178,9 @@ def main(scene, keyword_lists):
 
 
 def img2mask(im):
-	mask = np.all(color == 0, axis=-1) #
-	alpha = np.uint8(np.logical_not(mask)) * 255
-	mask = np.dstack((im, alpha))
+    mask = np.all(color == 0, axis=-1) #
+    alpha = np.uint8(np.logical_not(mask)) * 255
+    mask = np.dstack((im, alpha))
     return mask
 
 def overlay(bottomImage, topImage):
