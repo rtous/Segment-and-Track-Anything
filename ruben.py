@@ -171,8 +171,9 @@ def main(scene, keyword_lists):
 			else:
 				all_masks = img2mask(cv2.imread(path_all))
 				mask = cv2.imread(path_mask)
-				mask = replaceColors(mask, i)
+				#mask = replaceColors(mask, i)
 				mask = img2mask(mask)
+				print("mask shape = ", mask.shape)
 				#all_masks = cv2.addWeighted(all_masks,1.0,mask,1.0,0)
 				all_masks = overlay(bottomImage=all_masks, topImage=mask)
 			cv2.imwrite(path_all, all_masks)
@@ -190,14 +191,14 @@ def replaceColors(im, k):
     return im
 
 def img2mask(im):
-    mask = np.all(im == 0, axis=-1) #
+    mask = np.all(im == 0, axis=-1) 
     alpha = np.uint8(np.logical_not(mask)) * 255
     mask = np.dstack((im, alpha))
     return mask
 
 def overlay(bottomImage, topImage):
 	#Idea: add the topImage (complete) to a sliced bottomImage 
-    #Obtain an opencvmask from the alpha channel of the topImage
+    #Obtain an opencv mask from the alpha channel of the topImage
     _, mask = cv2.threshold(topImage[:, :, 3], 0, 255, cv2.THRESH_BINARY)
     #Invert the mask
     mask = cv2.bitwise_not(mask) 
