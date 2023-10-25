@@ -171,7 +171,7 @@ def main(scene, keyword_lists):
 			else:
 				all_masks = img2mask(cv2.imread(path_all))
 				mask = cv2.imread(path_mask)
-				#mask = replaceColors(mask, i)
+				mask = replaceColors(mask, i)
 				mask = img2mask(mask)
 				print("mask shape = ", mask.shape)
 				#all_masks = cv2.addWeighted(all_masks,1.0,mask,1.0,0)
