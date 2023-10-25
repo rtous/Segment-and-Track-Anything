@@ -180,6 +180,7 @@ def main(scene, keyword_lists):
 def replaceColors(im, k):
     imgray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     unique_colours = np.unique(imgray)
+    np.sort(unique_colours) 
     for i, color in enumerate(unique_colours):
         #mask = np.zeros_like(imgray)
         if color != 0:#do not change black
