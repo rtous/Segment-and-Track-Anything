@@ -183,7 +183,7 @@ def replaceColors(im, k):
     for i, color in enumerate(unique_colours):
         #mask = np.zeros_like(imgray)
         if color != 0:#do not change black
-        	im[imgray == color] = ((50+(k*10+i)*10)%255, 100, 100) 
+        	im[imgray == color] = (100+k*50)%255, 100, (100+i*50)%255) 
         	#im[imgray == color][0] = (50+(k*10+i)*10)%255
         #mask[imgray == color] = 255
         #cv2.threshold(source, thresholdValue, maxVal, thresholdingTechnique) 
