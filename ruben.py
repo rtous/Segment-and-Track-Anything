@@ -218,9 +218,9 @@ def replaceColors(im, k, palette):
     #to change the colors to avoid using the same for different keywords
     unique_colours = np.unique(test, axis=0, return_counts = True)
     for i, color in enumerate(unique_colours):
-    	objectId = idFromColor(palette, color)
+        objectId = idFromColor(palette, color)
         if objectId != 0:#do not change black
-        	im[imgray == color] = ((100+k*50)%255, 100, (objectId*50)%255)
+            im[imgray == color] = ((100+k*50)%255, 100, (objectId*50)%255)
     return im
 
 def img2mask(im):
