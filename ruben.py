@@ -34,15 +34,15 @@ def idFromColor(palette, c):
 def main(scene, keyword_lists):
 
 	#From aot_tracker.py
-    np.random.seed(200)
-    _palette = ((np.random.random((3*255))*0.7+0.3)*255).astype(np.uint8).tolist()
-    _palette = [0,0,0]+_palette
-    #c = _palette[id*3:id*3+3] USAGE
+	np.random.seed(200)
+	_palette = ((np.random.random((3*255))*0.7+0.3)*255).astype(np.uint8).tolist()
+	_palette = [0,0,0]+_palette
+	#c = _palette[id*3:id*3+3] USAGE
 
-    #Build our own dictionary for the colors
-    palette = {}
-    for i in range(255):
-        palette[i] = _palette[i*3:i*3+3]
+	#Build our own dictionary for the colors
+	palette = {}
+	for i in range(255):
+		palette[i] = _palette[i*3:i*3+3]
 
 	print("Ruben's version of SAM-Track") 
 	#file_path = "data/scenes/tiktok2/imagesFull"
