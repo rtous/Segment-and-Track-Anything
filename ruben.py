@@ -220,6 +220,7 @@ def replaceColors(im, k, palette):
     #and SAM-Track uses always the same colors, it's necessary 
     #to change the colors to avoid using the same for different keywords
     #unique_colours = np.unique(im, axis=0, return_counts = True)
+    print("-----------k=",k)
     unique_colours = np.unique(im.reshape(-1, im.shape[2]), axis=0)
     for i, color in enumerate(unique_colours):
         print("color=", color)
