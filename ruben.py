@@ -216,7 +216,7 @@ def replaceColors(im, k, palette):
     #As run segementation many times (one for each keywords list), 
     #and SAM-Track uses always the same colors, it's necessary 
     #to change the colors to avoid using the same for different keywords
-    unique_colours = np.unique(test, axis=0, return_counts = True)
+    unique_colours = np.unique(im, axis=0, return_counts = True)
     for i, color in enumerate(unique_colours):
         objectId = idFromColor(palette, color)
         if objectId != 0:#do not change black
