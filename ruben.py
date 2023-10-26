@@ -212,15 +212,22 @@ def replaceColors(im, k):
     return im
 '''
 
+def opencv_to_RGB(c):
+    return c[::-1]
+
 def replaceColors(im, k, palette):
     #As run segementation many times (one for each keywords list), 
     #and SAM-Track uses always the same colors, it's necessary 
     #to change the colors to avoid using the same for different keywords
-    unique_colours = np.unique(im, axis=0, return_counts = True)
+    #unique_colours = np.unique(im, axis=0, return_counts = True)
+    unique_colours = np.unique(im.reshape(-1, im.shape[2]), axis=0)
     for i, color in enumerate(unique_colours):
-        objectId = idFromColor(palette, color)
+        print("color=", color)
+        objectId = idFromColor(palette, opencv_to_RGB(color))
+        print("objectId=", objectId)
         if objectId != 0:#do not change black
-            im[imgray == color] = ((100+k*50)%255, 100, (objectId*50)%255)
+            mask = cv2.inRange(im, color, color)
+            im[mask==255]=((100+k*50)%255, 100, (objectId*50)%255)
     return im
 
 def img2mask(im):
