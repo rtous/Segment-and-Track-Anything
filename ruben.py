@@ -25,7 +25,24 @@ import json
 from tool.transfer_tools import mask2bbox
 import json
 
+def idFromColor(palette, c):
+    for i in range(255):  
+        if palette[i][0] == c[0] and palette[i][1] == c[1] and palette[i][2] == c[2]:
+            return i
+    return None
+
 def main(scene, keyword_lists):
+
+	#From aot_tracker.py
+    np.random.seed(200)
+    _palette = ((np.random.random((3*255))*0.7+0.3)*255).astype(np.uint8).tolist()
+    _palette = [0,0,0]+_palette
+    #c = _palette[id*3:id*3+3] USAGE
+
+    #Build our own dictionary for the colors
+    palette = {}
+    for i in range(255):
+        palette[i] = _palette[i*3:i*3+3]
 
 	print("Ruben's version of SAM-Track") 
 	#file_path = "data/scenes/tiktok2/imagesFull"
@@ -171,15 +188,19 @@ def main(scene, keyword_lists):
 			else:
 				all_masks = img2mask(cv2.imread(path_all))
 				mask = cv2.imread(path_mask)
-				mask = replaceColors(mask, i)
+				mask = replaceColors(mask, i, palette)
 				mask = img2mask(mask)
 				#all_masks = cv2.addWeighted(all_masks,1.0,mask,1.0,0)
 				all_masks = overlay(bottomImage=all_masks, topImage=mask)
 			cv2.imwrite(path_all, all_masks)
-
+'''
 def replaceColors(im, k):
+    #As run segementation many times (one for each keywords list), 
+    #and SAM-Track uses always the same colors, it's necessary 
+    #to change the colors to avoid using the same for different keywords
     imgray = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
     unique_colours = np.unique(imgray)
+    np.sort(unique_colours)
     for i, color in enumerate(unique_colours):
         #mask = np.zeros_like(imgray)
         if color != 0:#do not change black
@@ -188,10 +209,18 @@ def replaceColors(im, k):
         #mask[imgray == color] = 255
         #cv2.threshold(source, thresholdValue, maxVal, thresholdingTechnique) 
         #ret, thresh = cv2.threshold(mask, 127, 255, 0)
+    return im
+'''
 
-
-
-
+def replaceColors(im, k, palette):
+    #As run segementation many times (one for each keywords list), 
+    #and SAM-Track uses always the same colors, it's necessary 
+    #to change the colors to avoid using the same for different keywords
+    unique_colours = np.unique(test, axis=0, return_counts = True)
+    for i, color in enumerate(unique_colours):
+    	objectId = idFromColor(palette, color)
+        if objectId != 0:#do not change black
+        	im[imgray == color] = ((100+k*50)%255, 100, (objectId*50)%255)
     return im
 
 def img2mask(im):
