@@ -178,6 +178,7 @@ def main(scene, keyword_lists):
 	all_dir = f'{output_path}/{video_name}_all'
 	if not os.path.exists(all_dir):
 		os.mkdir(all_dir)
+	colors_used = 0
 	for i, keyword_list in enumerate(keyword_lists):
 		masks_dir = f'{output_path}/{video_name}_masks{i}'
 		for filename in os.listdir(masks_dir):
@@ -229,7 +230,7 @@ def replaceColors(im, k, palette):
         if objectId != 0:#do not change black
             mask = cv2.inRange(im, color, color)
             #im[mask==255]=((100+k*50)%255, 100, (objectId*50)%255)
-            im[mask==255]=palette[(objectId+10)%255]
+            im[mask==255]=palette[(objectId+10*k)%255] #skip 10 colors in the palette for each list    
     return im
 
 def img2mask(im):
