@@ -231,8 +231,8 @@ def replaceColors(im, k, palette):
             mask = cv2.inRange(im, color, color)
             #im[mask==255]=((100+k*50)%255, 100, (objectId*50)%255)
             im[mask==255]=palette[(objectId+10*k)%256] #skip 10 colors in the palette for each list    
-    		print("assigned color with id=", (objectId+10*k)%256)
-    		print("and value=", palette[(objectId+10*k)%256])
+            print("assigned color with id=", (objectId+10*k)%256)
+            print("and value=", palette[(objectId+10*k)%256])
     return im
 
 def img2mask(im):
