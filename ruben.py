@@ -228,7 +228,8 @@ def replaceColors(im, k, palette):
         print("objectId=", objectId)
         if objectId != 0:#do not change black
             mask = cv2.inRange(im, color, color)
-            im[mask==255]=((100+k*50)%255, 100, (objectId*50)%255)
+            #im[mask==255]=((100+k*50)%255, 100, (objectId*50)%255)
+            im[mask==255]=palette[(objectId+10)%255]
     return im
 
 def img2mask(im):
