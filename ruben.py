@@ -216,6 +216,9 @@ def replaceColors(im, k):
 def opencv_to_RGB(c):
     return c[::-1]
 
+def RGB_to_opencv(c):
+    return c[::-1]
+
 def replaceColors(im, k, palette):
     #As run segementation many times (one for each keywords list), 
     #and SAM-Track uses always the same colors, it's necessary 
@@ -230,9 +233,9 @@ def replaceColors(im, k, palette):
         if objectId != 0:#do not change black
             mask = cv2.inRange(im, color, color)
             #im[mask==255]=((100+k*50)%255, 100, (objectId*50)%255)
-            im[mask==255]=palette[(objectId+10*k)%256] #skip 10 colors in the palette for each list    
-            print("assigned color with id=", (objectId+10*k)%256)
-            print("and value=", palette[(objectId+10*k)%256])
+            im[mask==255]=RGB_to_opencv(palette[(objectId+10*k)%256]) #skip 10 colors in the palette for each list    
+            #print("assigned color with id=", (objectId+10*k)%256)
+            #print("and value=", palette[(objectId+10*k)%256])
     return im
 
 def img2mask(im):
