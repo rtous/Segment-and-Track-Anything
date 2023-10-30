@@ -224,12 +224,12 @@ def replaceColors(im, k, palette):
     #and SAM-Track uses always the same colors, it's necessary 
     #to change the colors to avoid using the same for different keywords
     #unique_colours = np.unique(im, axis=0, return_counts = True)
-    print("-----------k=",k)
+    #print("-----------k=",k)
     unique_colours = np.unique(im.reshape(-1, im.shape[2]), axis=0)
     for i, color in enumerate(unique_colours):
-        print("color=", color)
+        #print("color=", color)
         objectId = idFromColor(palette, opencv_to_RGB(color))
-        print("objectId=", objectId)
+        #print("objectId=", objectId)
         if objectId != 0:#do not change black
             mask = cv2.inRange(im, color, color)
             #im[mask==255]=((100+k*50)%255, 100, (objectId*50)%255)
