@@ -24,6 +24,7 @@ import numpy as np
 import json
 from tool.transfer_tools import mask2bbox
 import json
+import time
 
 def idFromColor(palette, c):
     for i in range(255):  
@@ -45,6 +46,8 @@ def main(scene, keyword_lists):
 		palette[i] = _palette[i*3:i*3+3]
 
 	print("Ruben's version of SAM-Track") 
+
+
 	#file_path = "data/scenes/tiktok2/imagesFull"
 	#output_path = "data/scenes/tiktok2/samtrack"
 	
@@ -162,6 +165,7 @@ def main(scene, keyword_lists):
 		frame_num=0
 
 		#file_name = input_img_seq.name.split('/')[-1].split('.')[0]
+		time_start = time.time()
 		imgs_path = sorted([os.path.join(file_path, img_name) for img_name in os.listdir(file_path)])
 		
 		io_args = {
@@ -174,6 +178,8 @@ def main(scene, keyword_lists):
 		print("Segmenting...")
 		img_seq_type_input_tracking(Seg_Tracker, io_args, video_name, imgs_path, fps, frame_num)
 		print("Done.")
+		time_end = time.time()
+		print("all done in %.2f seconds" % (time_end-time_start))
 
 	all_dir = f'{output_path}/{video_name}_all'
 	if not os.path.exists(all_dir):
